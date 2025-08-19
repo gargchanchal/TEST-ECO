@@ -26,7 +26,7 @@ app.use(morgan('dev'));
 app.use(
   session({
     name: 'sid',
-    secret: process.env.SESSION_SECRET || 'dev_secret_for_demo_only',
+    secret: process.env.SESSION_SECRET || '01234567890987654321y',
     resave: false,
     saveUninitialized: false,
     cookie: {
