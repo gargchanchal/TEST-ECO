@@ -53,9 +53,7 @@
                     <div class="total">Total: $<%= (cart.totalCents / 100).toFixed(2) %></div>
                     <div class="buttons">
                         <button class="btn secondary" type="submit">Update</button>
-                        <form action="/checkout" method="POST" class="inline">
-                            <button class="btn" type="submit" <%= !stripeConfigured ? 'disabled' : '' %>>Checkout</button>
-                        </form>
+                        <button class="btn" type="submit" formaction="/checkout" formmethod="POST" <%= !stripeConfigured ? 'disabled' : '' %>>Checkout</button>
                     </div>
                 </div>
             </form>
