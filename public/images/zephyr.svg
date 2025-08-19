@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#065f46"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g4)"/>
+  <g fill="#d1fae5">
+    <circle cx="300" cy="300" r="120" opacity="0.35"/>
+    <circle cx="500" cy="320" r="80" opacity="0.35"/>
+  </g>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#0b1020" font-family="Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="42" font-weight="700">Zephyr Mouse</text>
+</svg>
