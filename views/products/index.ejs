@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Products</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <main class="container">
+        <h1>Products</h1>
+
+        <div class="grid">
+            <% products.forEach(function(product) { %>
+                <div class="product-card">
+                    <div class="product-media" style="background-image:url('<%= product.image %>')"></div>
+                    <div class="product-body">
+                        <h2 class="product-title"><a href="/products/<%= product.id %>"><%= product.name %></a></h2>
+                        <p class="product-desc"><%= product.description %></p>
+                        <div class="product-bottom">
+                            <span class="product-price">$<%= (product.priceCents / 100).toFixed(2) %></span>
+                            <form action="/cart/add" method="POST">
+                                <input type="hidden" name="productId" value="<%= product.id %>" />
+                                <input class="qty" type="number" min="1" value="1" name="quantity" />
+                                <button class="btn" type="submit">Add to cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </main>
+</body>
+</html>
+

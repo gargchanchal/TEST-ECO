@@ -1,0 +1,16 @@
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="/products">Stripe Demo Shop</a>
+        <nav class="nav">
+            <a href="/products">Products</a>
+            <a href="/cart">Cart <span class="badge"><%= cartItemCount %></span></a>
+            <% if (!stripeConfigured) { %>
+                <span class="badge warn" title="Stripe not configured">Setup required</span>
+            <% } %>
+        </nav>
+    </div>
+    <div class="notice">
+        Use Stripe test cards, e.g. 4242 4242 4242 4242, any future date, any CVC.
+    </div>
+</header>
+

@@ -3,31 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Stripe Checkout Demo</title>
+    <title>Home</title>
     <link rel="stylesheet" href="/styles.css" />
+    <meta http-equiv="refresh" content="0; url=/products" />
 </head>
 <body>
     <main class="container">
-        <h1>Stripe Checkout Demo</h1>
-
-        <% if (!stripeConfigured) { %>
-            <div class="alert alert-warning">
-                <strong>Setup required:</strong> Set <code>STRIPE_SECRET_KEY</code> in your <code>.env</code> file to enable payments.
-            </div>
-        <% } %>
-
-        <div class="card">
-            <div class="card-body">
-                <h2><%= productName %></h2>
-                <p class="price"><%= (amountCents / 100).toFixed(2) %> <%= currency.toUpperCase() %></p>
-
-                <form action="/create-checkout-session" method="POST">
-                    <button type="submit" class="btn" <%= !stripeConfigured ? 'disabled' : '' %>>
-                        Pay with Stripe
-                    </button>
-                </form>
-            </div>
-        </div>
+        <p>Redirecting to products...</p>
     </main>
 </body>
 </html>
