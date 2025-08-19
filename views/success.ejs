@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Payment Success</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <main class="container">
+        <h1>Payment Success</h1>
+
+        <% if (!session) { %>
+            <p>Your payment was successful. (Details not available.)</p>
+        <% } else { %>
+            <p>Thanks! Your payment has been processed.</p>
+            <div class="details">
+                <p><strong>Session ID:</strong> <%= session.id %></p>
+                <p><strong>Amount total:</strong> <%= (session.amount_total / 100).toFixed(2) %> <%= session.currency.toUpperCase() %></p>
+                <p><strong>Status:</strong> <%= session.payment_status %></p>
+            </div>
+        <% } %>
+
+        <p><a href="/" class="link">Back to home</a></p>
+    </main>
+</body>
+</html>
+
