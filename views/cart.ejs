@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Your Cart</title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <%- include('./partials/nav') %>
+    <main class="container">
+        <h1>Your Cart</h1>
+
+        <% if (cart.items.length === 0) { %>
+            <p>Your cart is empty. <a class="link" href="/products">Browse products</a>.</p>
+        <% } else { %>
+            <form action="/cart/update" method="POST">
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th class="right">Price</th>
+                            <th class="right">Quantity</th>
+                            <th class="right">Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% cart.items.forEach(function(item, index) { %>
+                            <tr>
+                                <td>
+                                    <div class="cart-line">
+                                        <div class="thumb" style="background-image:url('<%= item.product.image %>')"></div>
+                                        <div>
+                                            <div class="title"><a href="/products/<%= item.product.id %>"><%= item.product.name %></a></div>
+                                            <div class="sku muted">SKU: <%= item.product.id %></div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="right">$<%= (item.product.priceCents / 100).toFixed(2) %></td>
+                                <td class="right">
+                                    <input class="qty" type="number" min="1" name="quantities[<%= item.product.id %>]" value="<%= item.quantity %>" />
+                                </td>
+                                <td class="right">$<%= ((item.product.priceCents * item.quantity) / 100).toFixed(2) %></td>
+                                <td class="right">
+                                    <button class="link danger" type="submit" name="remove" value="<%= item.product.id %>">Remove</button>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <div class="cart-actions">
+                    <div class="total">Total: $<%= (cart.totalCents / 100).toFixed(2) %></div>
+                    <div class="buttons">
+                        <button class="btn secondary" type="submit">Update</button>
+                        <form action="/checkout" method="POST" class="inline">
+                            <button class="btn" type="submit" <%= !stripeConfigured ? 'disabled' : '' %>>Checkout</button>
+                        </form>
+                    </div>
+                </div>
+            </form>
+        <% } %>
+    </main>
+</body>
+</html>
+

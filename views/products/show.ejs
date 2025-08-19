@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><%= product.name %></title>
+    <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+    <%- include('../partials/nav') %>
+    <main class="container">
+        <div class="product-detail">
+            <div class="product-media lg" style="background-image:url('<%= product.image %>')"></div>
+            <div class="product-info">
+                <h1><%= product.name %></h1>
+                <p class="muted">SKU: <%= product.id %></p>
+                <p class="lead"><%= product.description %></p>
+                <p class="price xl">$<%= (product.priceCents / 100).toFixed(2) %></p>
+                <form action="/cart/add" method="POST" class="inline">
+                    <input type="hidden" name="productId" value="<%= product.id %>" />
+                    <input class="qty" type="number" min="1" value="1" name="quantity" />
+                    <button class="btn" type="submit">Add to cart</button>
+                </form>
+                <a class="link" href="/products">Back to Products</a>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
